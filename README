@@ -1,0 +1,2 @@
+Do you think the mean helpfulness value may differ significantly between different customers or products?
+Yes. The helpfulness values I examine for customers are very different. Maximum value of helpfulness values by customer was 25.37 and minimum was 3.67. For product id, maximum value was 13.99 and minimum was 2.37. So I can conclude helpfulness value differ significantly between different customers or products.

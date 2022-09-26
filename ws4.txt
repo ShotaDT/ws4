@@ -1,0 +1,46 @@
+Write an alias called "l" for "ls -latr" to display the files in the current directory in list format and reverse chronologically-ordered as a short name.
+$ alias l='ls -latr'
+$ l
+>>total 3188516
+-rw-rw-r--   1 shota shota 3238702530 Nov 24  2017 amazon_reviews_us_Books_v1_02.tsv
+-rw-r--r--   1 shota shota        172 Feb  6  2020 .kshrc
+-rw-r--r--   1 shota shota        141 Sep 30  2021 .bash_profile
+......
+
+Write an alias called "w" for "ls -la | wc" to display the number of  files in the current directory as a short name.Put these aliases in your .bashrc file, so they will be re-used everytime you login in the future.
+vi ~/.bashrc
+# .bashrc
+#Aliases
+alias l='ls -latr'
+alias w='ls -la | wc'
+
+$ source ~/.bashrc
+$ w
+     21     182    1286
+
+Pick 3 different customer IDs. Redirect the helpfulness scores for each customer ID to a file named CUSTOMERS/customerID.txt
+$grep 52774618  amazon_reviews_us_Books_v1_02.tsv|cut -f 9 > 52774618.txt
+$grep 50593376  amazon_reviews_us_Books_v1_02.tsv|cut -f 9 > 50593376.txt
+$grep 41521760  amazon_reviews_us_Books_v1_02.tsv|cut -f 9 > 41521760.txt
+
+Pick 3 different product IDs. Redirect the helpfulness scores for each product ID to a file named PRODUCTS/productID.txt
+$ grep 0679444815 amazon_reviews_us_Books_v1_02.tsv|cut -f 9 >0679444815.txt
+$ grep 0156027321 amazon_reviews_us_Books_v1_02.tsv|cut -f 9 >0156027321.txt
+$ grep 0975599518 amazon_reviews_us_Books_v1_02.tsv|cut -f 9  >0975599518.txt
+
+Compute the mean (average) of the list of helpfulness values in each of the 6 files you created above. You may use bc or anything else you like for this. Search online how to use bc for means (averages).
+customer
+$ awk '{ total += $1; count++ } END { print total/count }' 52774618.txt |bc
+>>9.7483
+$ awk '{ total += $1; count++ } END { print total/count }' 50593376.txt |bc
+>>25.3793
+$ awk '{ total += $1; count++ } END { print total/count }' 41521760.txt |bc
+>>3.65517
+product
+$ awk '{ total += $1; count++ } END { print total/count }' 0156027321.txt |bc
+>>8.24893
+$ awk '{ total += $1; count++ } END { print total/count }' 0679444815.txt |bc
+>>2.3717
+$ awk '{ total += $1; count++ } END { print total/count }' 0975599518.txt |bc
+>>13.9902
+
